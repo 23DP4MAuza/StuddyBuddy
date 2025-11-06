@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>StudyBuddy - Study Group Finder</title>
-  <link rel="stylesheet" href="css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact</title>
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
   <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
@@ -18,44 +18,14 @@
       <button class="mobile-menu-toggle">☰</button>
     </div>
   </header>
-
-  <main id="home" class="container layout">
-    <article class="content">
-      <h1>Welcome to StudyBuddy!</h1>
-      <p>StudyBuddy is a powerful app designed for students to find and join study groups, chat with peers, share resources, and organize study events – all in one place.</p>
-
-      <h2>How StudyBuddy Works</h2>
-      <p>Simply select your course, browse available groups, or create your own. You can start group chats, schedule study sessions, exchange notes, and collaborate with students at your school or university.</p>
-
-      <img src="img/index/studygroup.jpg" alt="Students studying together" style="width:100%; max-width:600px; margin-top:15px; border-radius:8px;">
-
-      <section id="features">
-        <h2>What can StuddyBuddy do? </h2>
-        <ul>
-          <li>Search for and join study groups based on specific courses, topics, or areas of interest</li>
-          <li>Create your own study group and easily invite classmates, friends, or peers to participate</li>
-          <li>Communicate through group chats for collaboration or private chats for one-on-one discussions</li>
-          <li>Plan and organize events, study sessions, or review meetings directly within the platform</li>
-          <li>Share study materials such as notes, links, documents, and other helpful resources with your group</li>
-        </ul>
-      </section>
-    </article>
-
-    <aside class="sidebar">
-      <h2>Helpful Resources</h2>
-      <ul class="related">
-        <li><a href="#">How to build a productive study group</a></li>
-        <li><a href="#">Top 5 study apps for students</a></li>
-        <li><a href="#">Time management tips for exams</a></li>
-      </ul>
-      <p class="note">StudyBuddy is more than an app – it's a community where learning happens together.</p>
-    </aside>
+  
+  <main>
+    <div class="container">
+    </div>
   </main>
-
-  <footer>
-    <div id="footer"></div>
-  </footer>
-
+  
+  <footer id="footer"></footer>
+  
   <script>
     fetch('components/navbar.html')
       .then(response => {
@@ -65,6 +35,7 @@
       .then(data => {
         document.getElementById('navbar').innerHTML = data;
   
+        //  Initialize mobile menu toggle after navbar loads
         const toggle = document.querySelector(".mobile-menu-toggle");
         const nav = document.querySelector(".nav");
         if (toggle && nav) {
@@ -143,6 +114,5 @@
       }, 150);
     });
   </script>
-  
 </body>
 </html>

@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>StudyBuddy - Study Group Finder</title>
-  <link rel="stylesheet" href="css/style.css">
+  <title>Study Groups</title>
+  <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
   <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
@@ -19,42 +19,68 @@
     </div>
   </header>
 
-  <main id="home" class="container layout">
-    <article class="content">
-      <h1>Welcome to StudyBuddy!</h1>
-      <p>StudyBuddy is a powerful app designed for students to find and join study groups, chat with peers, share resources, and organize study events – all in one place.</p>
+  <main>
+    <div class="container">
+      <h2 class="page-title">Join a Study Group</h2>
+      <div class="groups-container">
+        <div class="card">
+          <img src="../img/groups/math.png" alt="Math Study Group">
+          <div class="card-body">
+            <h3>Math</h3>
+            <p>Work through problem sets, calculus, and algebra with peers.</p>
+            <a href="#" class="btn">Join Group</a>
+          </div>
+        </div>
 
-      <h2>How StudyBuddy Works</h2>
-      <p>Simply select your course, browse available groups, or create your own. You can start group chats, schedule study sessions, exchange notes, and collaborate with students at your school or university.</p>
+        <div class="card">
+          <img src="../img/groups/literature.png" alt="Literature Study Group">
+          <div class="card-body">
+            <h3>Literature</h3>
+            <p>Discuss novels, poetry, and improve essay writing skills.</p>
+            <a href="#" class="btn">Join Group</a>
+          </div>
+        </div>
 
-      <img src="img/index/studygroup.jpg" alt="Students studying together" style="width:100%; max-width:600px; margin-top:15px; border-radius:8px;">
+        <div class="card">
+          <img src="../img/groups/chemistry.png" alt="Chemistry Study Group">
+          <div class="card-body">
+            <h3>Chemistry</h3>
+            <p>Review lab work, equations, and study for chemistry exams.</p>
+            <a href="#" class="btn">Join Group</a>
+          </div>
+        </div>
 
-      <section id="features">
-        <h2>What can StuddyBuddy do? </h2>
-        <ul>
-          <li>Search for and join study groups based on specific courses, topics, or areas of interest</li>
-          <li>Create your own study group and easily invite classmates, friends, or peers to participate</li>
-          <li>Communicate through group chats for collaboration or private chats for one-on-one discussions</li>
-          <li>Plan and organize events, study sessions, or review meetings directly within the platform</li>
-          <li>Share study materials such as notes, links, documents, and other helpful resources with your group</li>
-        </ul>
-      </section>
-    </article>
+        <div class="card">
+          <img src="../img/groups/programming.png" alt="Programming Study Group">
+          <div class="card-body">
+            <h3>Programming</h3>
+            <p>Collaborate on coding exercises and share project ideas.</p>
+            <a href="#" class="btn">Join Group</a>
+          </div>
+        </div>
 
-    <aside class="sidebar">
-      <h2>Helpful Resources</h2>
-      <ul class="related">
-        <li><a href="#">How to build a productive study group</a></li>
-        <li><a href="#">Top 5 study apps for students</a></li>
-        <li><a href="#">Time management tips for exams</a></li>
-      </ul>
-      <p class="note">StudyBuddy is more than an app – it's a community where learning happens together.</p>
-    </aside>
+        <div class="card">
+          <img src="../img/groups/history.png" alt="History Study Group">
+          <div class="card-body">
+            <h3>History</h3>
+            <p>Explore historical events and prepare for history tests.</p>
+            <a href="#" class="btn">Join Group</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <img src="../img/groups/biology.png" alt="Biology Study Group">
+          <div class="card-body">
+            <h3>Biology</h3>
+            <p>Study anatomy, genetics, and biology concepts with peers.</p>
+            <a href="#" class="btn">Join Group</a>
+          </div>
+        </div>
+      </div>
+    </div>
   </main>
 
-  <footer>
-    <div id="footer"></div>
-  </footer>
+  <footer id="footer"></footer>
 
   <script>
     fetch('components/navbar.html')
@@ -65,6 +91,7 @@
       .then(data => {
         document.getElementById('navbar').innerHTML = data;
   
+        //  Initialize mobile menu toggle after navbar loads
         const toggle = document.querySelector(".mobile-menu-toggle");
         const nav = document.querySelector(".nav");
         if (toggle && nav) {
@@ -143,6 +170,5 @@
       }, 150);
     });
   </script>
-  
 </body>
 </html>

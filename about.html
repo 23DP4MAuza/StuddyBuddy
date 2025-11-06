@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About StudyBuddy</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+    🌙
+  </button>
+
+  <header>
+    <div class="container header-inner">
+      <h1 class="site-title">StudyBuddy</h1>
+      <div id="navbar"></div>
+      <button class="mobile-menu-toggle">☰</button>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="about">
+      <h2>About StudyBuddy</h2>
+      <p>
+        In today's fast-paced and often overwhelming academic world, students face more challenges than ever before. Between balancing multiple courses, managing assignments, preparing for exams, and keeping up with extracurriculars, studying can feel isolating and unorganized. Many students want to collaborate and learn with their peers, but struggle to find the right people, resources, or time to make it happen.
+      </p>
+      <figure>
+        <img src="/img/about/2022-year-in-charts-2.png" alt="Long-term trends in reading and mathematics achievement
+        ">
+        <figcaption>
+          Source: <a href="https://nces.ed.gov/fastfacts/display.asp?id=38" target="_blank" rel="noopener noreferrer">
+            National Center for Education Statistics (NCES)
+          </a>
+        </figcaption>
+      </figure>      
+      <p><strong>That's where StudyBuddy comes in.</strong></p>
+      <p>
+        StudyBuddy was created to bring students together, making collaboration simple, effective, and accessible. Our mission is to transform studying from a stressful solo task into a supportive group experience. With StudyBuddy, you can easily discover and join study groups based on your courses or topics of interest, or create your own and invite classmates. The app allows you to chat with peers in groups or privately, share valuable resources like notes and documents, and even schedule events or study sessions to stay on track.
+      </p>
+      <p>
+        We built StudyBuddy to solve a growing problem in our day and age: the lack of meaningful academic connection in an increasingly digital world. While technology has made information more accessible, it has also created a sense of isolation. StudyBuddy bridges that gap by combining modern communication tools with the timeless power of peer learning.
+      </p>
+      <p>
+        At its core, StudyBuddy is more than just an app it's a community built for students, by students. Together, we can make studying smarter, more collaborative, and a lot less stressful.
+      </p>
+    </section>
+
+    <section>
+      <blockquote>
+        <p><em>
+          "More than 60% of students reported learning "somewhat more" or "a lot more" in groups compared to studying alone, and almost 70% said study groups increased their motivation to study. These findings suggest that well-organized, peer-led study groups can improve academic stability and make learning more meaningful."
+        </em></p>
+      </blockquote>
+    
+      <p class="reference">
+        <small>
+          Reference: McCabe, J. A. & Lummis, S. N. (2018). 
+          <em>Why and how do undergraduates study in groups?</em> 
+          Scholarships of Teaching and Learning in Psychology, 4(1), 27–42.  
+          Retrieved from 
+          <a href="https://psycnet.apa.org/record/2018-05126-001" target="_blank" rel="noopener noreferrer">
+            APA / ResearchGate
+          </a>
+        </small>
+      </p>
+    </section>
+  </main>
+
+  <footer id="footer"></footer>
+
+  <script>
+    fetch('components/navbar.html')
+      .then(response => {
+        if (!response.ok) throw new Error('Network response was not ok');
+        return response.text();
+      })
+      .then(data => {
+        document.getElementById('navbar').innerHTML = data;
+  
+        //  Initialize mobile menu toggle after navbar loads
+        const toggle = document.querySelector(".mobile-menu-toggle");
+        const nav = document.querySelector(".nav");
+        if (toggle && nav) {
+          toggle.addEventListener("click", () => {
+            nav.classList.toggle("active");
+          });
+        }
+      })
+      .catch(error => {
+        console.error('Error loading navbar:', error);
+        document.getElementById('navbar').innerHTML = `
+          <nav>
+            <ul class="nav">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="about.html">About</a></li>
+              <li><a href="groups.html">Groups</a></li>
+              <li><a href="contact.html">Contact</a></li>
+            </ul>
+          </nav>
+        `;
+  
+        const toggle = document.querySelector(".mobile-menu-toggle");
+        const nav = document.querySelector(".nav");
+        if (toggle && nav) {
+          toggle.addEventListener("click", () => {
+            nav.classList.toggle("active");
+          });
+        }
+      });
+  
+    fetch('components/footer.html')
+      .then(response => {
+        if (!response.ok) throw new Error('Network response was not ok');
+        return response.text();
+      })
+      .then(data => {
+        document.getElementById('footer').innerHTML = data;
+      })
+      .catch(error => {
+        console.error('Error loading footer:', error);
+        document.getElementById('footer').innerHTML = `
+          <div class="container footer-inner">
+            <small>© 2025 StudyBuddy. All rights reserved.</small>
+            <ul class="social">
+              <li><a href="#">Facebook</a></li>
+              <li><a href="#">X</a></li>
+              <li><a href="#">Instagram</a></li>
+            </ul>
+          </div>
+        `;
+      });
+  
+    const themeToggle = document.getElementById('themeToggle');
+    const html = document.documentElement;
+  
+    const currentTheme = localStorage.getItem('theme') || 'light';
+    html.setAttribute('data-theme', currentTheme);
+  
+    function updateThemeIcon(theme) {
+      themeToggle.textContent = theme === 'dark' ? '☀️' : '🌙';
+    }
+  
+    updateThemeIcon(currentTheme);
+  
+    themeToggle.addEventListener('click', () => {
+      const currentTheme = html.getAttribute('data-theme');
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+  
+      html.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+      updateThemeIcon(newTheme);
+  
+      themeToggle.style.transform = 'scale(0.9)';
+      setTimeout(() => {
+        themeToggle.style.transform = 'scale(1)';
+      }, 150);
+    });
+  </script>
+  
+</body>
+</html>
