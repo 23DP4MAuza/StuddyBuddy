@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Study Groups</title>
-  <link rel="stylesheet" href="/css/style.css">
+  <title>Study Groups | StudyBuddy</title>
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
-    🌙
-  </button>
+  <!-- Tumšā / gaišā režīma poga -->
+  <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">🌙</button>
 
+  <!-- Galvene -->
   <header>
     <div class="container header-inner">
       <h1 class="site-title">StudyBuddy</h1>
@@ -19,12 +19,14 @@
     </div>
   </header>
 
+  <!-- Satura daļa -->
   <main>
     <div class="container">
       <h2 class="page-title">Join a Study Group</h2>
+
       <div class="groups-container">
         <div class="card">
-          <img src="../img/groups/math.png" alt="Math Study Group">
+          <img src="img/groups/math.png" alt="Math Study Group">
           <div class="card-body">
             <h3>Math</h3>
             <p>Work through problem sets, calculus, and algebra with peers.</p>
@@ -33,7 +35,7 @@
         </div>
 
         <div class="card">
-          <img src="../img/groups/literature.png" alt="Literature Study Group">
+          <img src="img/groups/literature.png" alt="Literature Study Group">
           <div class="card-body">
             <h3>Literature</h3>
             <p>Discuss novels, poetry, and improve essay writing skills.</p>
@@ -42,7 +44,7 @@
         </div>
 
         <div class="card">
-          <img src="../img/groups/chemistry.png" alt="Chemistry Study Group">
+          <img src="img/groups/chemistry.png" alt="Chemistry Study Group">
           <div class="card-body">
             <h3>Chemistry</h3>
             <p>Review lab work, equations, and study for chemistry exams.</p>
@@ -51,7 +53,7 @@
         </div>
 
         <div class="card">
-          <img src="../img/groups/programming.png" alt="Programming Study Group">
+          <img src="img/groups/programming.png" alt="Programming Study Group">
           <div class="card-body">
             <h3>Programming</h3>
             <p>Collaborate on coding exercises and share project ideas.</p>
@@ -60,7 +62,7 @@
         </div>
 
         <div class="card">
-          <img src="../img/groups/history.png" alt="History Study Group">
+          <img src="img/groups/history.png" alt="History Study Group">
           <div class="card-body">
             <h3>History</h3>
             <p>Explore historical events and prepare for history tests.</p>
@@ -69,7 +71,7 @@
         </div>
 
         <div class="card">
-          <img src="../img/groups/biology.png" alt="Biology Study Group">
+          <img src="img/groups/biology.png" alt="Biology Study Group">
           <div class="card-body">
             <h3>Biology</h3>
             <p>Study anatomy, genetics, and biology concepts with peers.</p>
@@ -80,95 +82,12 @@
     </div>
   </main>
 
-  <footer id="footer"></footer>
+  <!-- Kājene -->
+  <footer>
+    <div id="footer"></div>
+  </footer>
 
-  <script>
-    fetch('components/navbar.html')
-      .then(response => {
-        if (!response.ok) throw new Error('Network response was not ok');
-        return response.text();
-      })
-      .then(data => {
-        document.getElementById('navbar').innerHTML = data;
-  
-        //  Initialize mobile menu toggle after navbar loads
-        const toggle = document.querySelector(".mobile-menu-toggle");
-        const nav = document.querySelector(".nav");
-        if (toggle && nav) {
-          toggle.addEventListener("click", () => {
-            nav.classList.toggle("active");
-          });
-        }
-      })
-      .catch(error => {
-        console.error('Error loading navbar:', error);
-        document.getElementById('navbar').innerHTML = `
-          <nav>
-            <ul class="nav">
-              <li><a href="index.html">Home</a></li>
-              <li><a href="about.html">About</a></li>
-              <li><a href="groups.html">Groups</a></li>
-              <li><a href="contact.html">Contact</a></li>
-            </ul>
-          </nav>
-        `;
-  
-        const toggle = document.querySelector(".mobile-menu-toggle");
-        const nav = document.querySelector(".nav");
-        if (toggle && nav) {
-          toggle.addEventListener("click", () => {
-            nav.classList.toggle("active");
-          });
-        }
-      });
-  
-    fetch('components/footer.html')
-      .then(response => {
-        if (!response.ok) throw new Error('Network response was not ok');
-        return response.text();
-      })
-      .then(data => {
-        document.getElementById('footer').innerHTML = data;
-      })
-      .catch(error => {
-        console.error('Error loading footer:', error);
-        document.getElementById('footer').innerHTML = `
-          <div class="container footer-inner">
-            <small>© 2025 StudyBuddy. All rights reserved.</small>
-            <ul class="social">
-              <li><a href="#">Facebook</a></li>
-              <li><a href="#">X</a></li>
-              <li><a href="#">Instagram</a></li>
-            </ul>
-          </div>
-        `;
-      });
-  
-    const themeToggle = document.getElementById('themeToggle');
-    const html = document.documentElement;
-  
-    const currentTheme = localStorage.getItem('theme') || 'light';
-    html.setAttribute('data-theme', currentTheme);
-  
-    function updateThemeIcon(theme) {
-      themeToggle.textContent = theme === 'dark' ? '☀️' : '🌙';
-    }
-  
-    updateThemeIcon(currentTheme);
-  
-    themeToggle.addEventListener('click', () => {
-      const currentTheme = html.getAttribute('data-theme');
-      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-  
-      html.setAttribute('data-theme', newTheme);
-      localStorage.setItem('theme', newTheme);
-      updateThemeIcon(newTheme);
-  
-      themeToggle.style.transform = 'scale(0.9)';
-      setTimeout(() => {
-        themeToggle.style.transform = 'scale(1)';
-      }, 150);
-    });
-  </script>
+  <!-- Galvenais JS -->
+  <script src="js/main.js"></script>
 </body>
 </html>
